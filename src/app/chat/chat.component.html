@@ -1,0 +1,56 @@
+<div class="chat-container">
+  <div class="chat-settings">
+    <div class="setting-group">
+      <label for="model-select">Modèle IA:</label>
+      <select id="model-select" [(ngModel)]="selectedModel" class="select-input">
+        <option *ngFor="let model of models" [value]="model.value">{{ model.label }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="chat-messages" #chatMessages>
+    <div 
+      *ngFor="let message of messages" 
+      [class]="'message ' + (message.isUser ? 'user-message' : 'assistant-message')"
+    >
+      <div class="message-avatar">
+        <span *ngIf="message.isUser">👤</span>
+        <span *ngIf="!message.isUser">🤖</span>
+      </div>
+      <div class="message-content">
+        <p>{{ message.content }}</p>
+        <span class="message-time">{{ message.timestamp | date:'HH:mm' }}</span>
+      </div>
+    </div>
+    <div *ngIf="isLoading" class="message assistant-message">
+      <div class="message-avatar">🤖</div>
+      <div class="message-content">
+        <div class="typing-indicator">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-input-container">
+    <textarea
+      [(ngModel)]="userMessage"
+      (keydown)="onKeyPress($event)"
+      placeholder="Tapez votre message ici... (Entrée pour envoyer)"
+      class="chat-input"
+      rows="1"
+      [disabled]="isLoading"
+    ></textarea>
+    <button 
+      (click)="sendMessage()" 
+      [disabled]="!userMessage.trim() || isLoading"
+      class="send-button"
+    >
+      <span *ngIf="!isLoading">📤 Envoyer</span>
+      <span *ngIf="isLoading">⏳ Envoi...</span>
+    </button>
+  </div>
+</div>
+
