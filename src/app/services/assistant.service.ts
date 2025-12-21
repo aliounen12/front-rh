@@ -17,7 +17,10 @@ export class AssistantService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.post<ChatResponse>(this.apiUrl, request, { headers });
+    return this.http.post<ChatResponse>(this.apiUrl, request, { 
+      headers,
+      withCredentials: false // Mettez à true si votre API utilise des cookies/sessions
+    });
   }
 }
 

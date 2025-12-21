@@ -40,11 +40,22 @@
    - Allez sur [app.netlify.com/drop](https://app.netlify.com/drop)
    - Glissez-déposez le dossier `dist/front-rh/browser`
 
-## Configuration de l'API
+## Configuration de l'API FastAPI
 
-⚠️ **Important** : Assurez-vous de configurer l'URL de votre API dans `src/environments/environment.prod.ts` avant de déployer.
+⚠️ **Important** : 
 
-Si votre API est sur un autre domaine, vous devrez peut-être configurer CORS sur votre serveur backend.
+1. **Configurer l'URL de l'API dans Angular**
+   - Mettez à jour `src/environments/environment.prod.ts` avec l'URL de votre API de production
+   - Exemple: `apiUrl: 'https://votre-api.railway.app/assistant/chat'`
+
+2. **Configurer CORS dans FastAPI**
+   - Voir le fichier `FASTAPI_CONFIG.md` pour les détails
+   - Ajoutez votre URL Netlify dans `allow_origins` de votre middleware CORS
+   - Exemple de configuration dans `FASTAPI_EXAMPLE.py`
+
+3. **Variables d'environnement**
+   - Configurez `ALLOWED_ORIGINS` dans votre API FastAPI avec l'URL Netlify
+   - Format: `"https://votre-site.netlify.app"`
 
 ## Mise à jour automatique
 

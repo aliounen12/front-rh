@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000/assistant/chat'
+  apiUrl: 'https://gestion-rh-lac.vercel.app/chat' // Utilisez l'API Vercel en développement aussi
 };
 

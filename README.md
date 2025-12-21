@@ -24,11 +24,13 @@ npm install
 
 ## Configuration
 
-Avant de lancer l'application, assurez-vous de configurer l'URL de l'API dans le fichier `src/app/services/assistant.service.ts` :
+L'application est configurée pour utiliser l'API FastAPI déployée sur Vercel :
+- **URL API**: `https://gestion-rh-lac.vercel.app/chat`
+- **Documentation API**: [https://gestion-rh-lac.vercel.app/docs](https://gestion-rh-lac.vercel.app/docs)
 
-```typescript
-private apiUrl = 'http://localhost:8000/assistant/chat'; // Ajustez selon votre API
-```
+Les URLs sont configurées dans :
+- `src/environments/environment.ts` (développement)
+- `src/environments/environment.prod.ts` (production)
 
 ## Lancement
 
@@ -61,7 +63,7 @@ src/
 
 ## API
 
-L'application communique avec l'endpoint `/assistant/chat` qui accepte :
+L'application communique avec l'endpoint `/chat` de l'API FastAPI qui accepte :
 
 **Requête :**
 ```json
@@ -81,8 +83,15 @@ L'application communique avec l'endpoint `/assistant/chat` qui accepte :
 
 ## Technologies utilisées
 
-- Angular 17
+- Angular 19
 - TypeScript
 - RxJS
 - CSS3 (animations et gradients)
+- API FastAPI (déployée sur Vercel)
+
+## Documentation supplémentaire
+
+- `API_INTEGRATION.md` - Guide d'intégration avec l'API
+- `NETLIFY_DEPLOY.md` - Guide de déploiement sur Netlify
+- `FASTAPI_CONFIG.md` - Configuration CORS et déploiement FastAPI
 
