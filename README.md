@@ -25,8 +25,8 @@ npm install
 ## Configuration
 
 L'application est configurée pour utiliser l'API FastAPI déployée sur Vercel :
-- **URL API**: `https://gestion-rh-lac.vercel.app/chat`
-- **Documentation API**: [https://gestion-rh-lac.vercel.app/docs](https://gestion-rh-lac.vercel.app/docs)
+- **URL API**: `https://gestion-rh-pi.vercel.app/chat`
+- **Documentation API**: [https://gestion-rh-pi.vercel.app/docs](https://gestion-rh-pi.vercel.app/docs)
 
 Les URLs sont configurées dans :
 - `src/environments/environment.ts` (développement)

@@ -80,8 +80,37 @@ export class ChatComponent implements OnInit {
       },
       error: (error) => {
         console.error('Erreur lors de l\'envoi du message:', error);
+        
+        let errorMessage = 'Erreur: Impossible de contacter l\'assistant.';
+        
+        // Priorité au message d'erreur de l'API
+        if (error.errorMessage) {
+          errorMessage = `Erreur API: ${error.errorMessage}`;
+        } else if (error.status === 0) {
+          errorMessage = 'Erreur: Impossible de se connecter à l\'API. Vérifiez votre connexion internet et que l\'API est accessible.';
+        } else if (error.status === 404) {
+          errorMessage = 'Erreur: Endpoint non trouvé. Vérifiez l\'URL de l\'API.';
+        } else if (error.status === 403 || error.status === 401) {
+          errorMessage = 'Erreur: Accès refusé. Vérifiez la configuration CORS de l\'API.';
+        } else if (error.status === 400) {
+          // Erreur 400 - Bad Request
+          if (error.error?.detail) {
+            errorMessage = `Erreur: ${error.error.detail}`;
+          } else if (error.error?.message) {
+            errorMessage = `Erreur: ${error.error.message}`;
+          } else {
+            errorMessage = 'Erreur: Requête invalide. Vérifiez les paramètres envoyés.';
+          }
+        } else if (error.status >= 500) {
+          errorMessage = 'Erreur: Problème serveur. L\'API a rencontré une erreur interne.';
+        } else if (error.error?.message) {
+          errorMessage = `Erreur: ${error.error.message}`;
+        } else if (error.message) {
+          errorMessage = `Erreur: ${error.message}`;
+        }
+        
         this.messages.push({
-          content: 'Erreur: Impossible de contacter l\'assistant. Veuillez vérifier que l\'API est accessible.',
+          content: errorMessage,
           isUser: false,
           timestamp: new Date()
         });

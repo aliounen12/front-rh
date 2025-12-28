@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://gestion-rh-lac.vercel.app/chat'
+  apiUrl: 'https://gestion-rh-pi.vercel.app/chat'
 };
 

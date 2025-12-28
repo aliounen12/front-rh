@@ -5,8 +5,8 @@
 L'application Angular est maintenant configurée pour utiliser votre API FastAPI déployée sur Vercel.
 
 ### URL de l'API
-- **Production & Développement**: `https://gestion-rh-lac.vercel.app/chat`
-- **Documentation API**: [https://gestion-rh-lac.vercel.app/docs](https://gestion-rh-lac.vercel.app/docs)
+- **Production & Développement**: `https://gestion-rh-pi.vercel.app/chat`
+- **Documentation API**: [https://gestion-rh-pi.vercel.app/docs](https://gestion-rh-pi.vercel.app/docs)
 
 ### Endpoint utilisé
 - **POST** `/chat`
@@ -42,7 +42,7 @@ L'application sera accessible sur `http://localhost:4200` et communiquera avec l
 Vous pouvez tester l'API avec curl :
 
 ```bash
-curl -X POST https://gestion-rh-lac.vercel.app/chat \
+curl -X POST https://gestion-rh-pi.vercel.app/chat \
   -H "Content-Type: application/json" \
   -d '{
     "message": "Bonjour, pouvez-vous m'aider ?",
